@@ -2,10 +2,9 @@
 
 namespace Potager\Grape\Validators;
 
-use Potager\Grape\Messages\DefaultMessages;
-use Potager\Grape\FieldContext;
 use Potager\Grape\Grape;
-use Potager\Grape\Traits\CanBeUnique;
+use Potager\Grape\FieldContext;
+use Potager\Grape\Messages\DefaultMessages;
 
 /**
  * String validator for validating and manipulating string values.
@@ -17,8 +16,6 @@ use Potager\Grape\Traits\CanBeUnique;
  */
 class StringValidator extends AbstractValidator
 {
-    use CanBeUnique;
-
     /**
      * Whether to convert empty strings to null values.
      * 

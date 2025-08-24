@@ -4,7 +4,6 @@ namespace Potager\Grape\Validators;
 
 use Potager\Grape\Messages\DefaultMessages;
 use Potager\Grape\FieldContext;
-use Potager\Grape\Traits\CanBeUnique;
 
 /**
  * Validator for integer values.
@@ -18,8 +17,6 @@ use Potager\Grape\Traits\CanBeUnique;
  */
 class IntegerValidator extends NumberValidatorBase
 {
-    use CanBeUnique;
-
     /**
      * Create a new integer validator instance.
      * 

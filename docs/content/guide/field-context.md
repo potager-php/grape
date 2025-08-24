@@ -159,17 +159,6 @@ class FieldContext
     public function getWildcardPath(): string|null;
 
     /**
-     * Retrieves the PDO instance used for database-related validation.
-     *
-     * Returns the PDO database connection that can be used by validators
-     * requiring database access, such as uniqueness checks or reference validation.
-     * This property must be set before use, typically during context initialization.
-     *
-     * @return \PDO Active PDO database connection instance.
-     */
-    public function getPDO(): \PDO;
-
-    /**
      * Updates the value under validation.
      *
      * Replaces the current field value with a new value. This is commonly used

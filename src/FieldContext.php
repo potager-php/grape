@@ -116,14 +116,6 @@ class FieldContext
     private MessageProviderContract $messageProvider;
 
     /**
-     * A PDO instance, typically used for database-related validation (e.g., uniqueness checks).
-     * Optional dependency that can be injected for validators requiring database access.
-     *
-     * @var \PDO
-     */
-    private \PDO $pdo;
-
-    /**
      * FieldContext constructor.
      *
      * Initializes a validation context for a specific field, linking to parent context if nested.
@@ -357,20 +349,6 @@ class FieldContext
         }, $this->path);
 
         return implode('.', $wildcardPath);
-    }
-
-    /**
-     * Retrieves the PDO instance used for database-related validation.
-     *
-     * Returns the PDO database connection that can be used by validators
-     * requiring database access, such as uniqueness checks or reference validation.
-     * This property must be set before use, typically during context initialization.
-     *
-     * @return \PDO Active PDO database connection instance.
-     */
-    public function getPDO(): \PDO
-    {
-        return $this->pdo;
     }
 
     /**
