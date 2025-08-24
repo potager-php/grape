@@ -1,8 +1,8 @@
 <?php
 
-use Potager\Grape\Contracts\MessageProviderContract;
 use Potager\Grape\Grape;
-use Potager\Grape\SimpleMessageProvider;
+use Potager\Grape\Contracts\MessageProviderContract;
+use Potager\Grape\Messages\SimpleMessageProvider;
 
 class CustomMessageProvider implements MessageProviderContract
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Potager\Grape;
+namespace Potager\Grape\Messages;
 
 class DefaultMessages
 {

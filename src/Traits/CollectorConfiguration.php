@@ -3,7 +3,7 @@
 namespace Potager\Grape\Traits;
 
 use Potager\Grape\Contracts\ErrorCollectorContract;
-use Potager\Grape\SimpleErrorCollector;
+use Potager\Grape\Collectors\SimpleErrorCollector;
 
 
 trait CollectorConfiguration

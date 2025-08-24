@@ -1,8 +1,8 @@
 <?php
 
 use Potager\Grape\Grape;
-use Potager\Grape\SimpleMessageProvider;
 use Potager\Grape\FieldContext;
+use Potager\Grape\Messages\SimpleMessageProvider;
 use Mockery;
 
 class Stub

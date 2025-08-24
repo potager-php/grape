@@ -1,8 +1,9 @@
 <?php
 
-namespace Potager\Grape;
+namespace Potager\Grape\Messages;
 
 use Potager\Grape\Contracts\MessageProviderContract;
+use Potager\Grape\FieldContext;
 
 /**
  * A simplified implementation of MessageProvider that allows direct initialization

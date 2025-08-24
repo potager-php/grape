@@ -1,9 +1,9 @@
 <?php
 
-use Potager\Grape\Contracts\ErrorCollectorContract;
 use Potager\Grape\FieldContext;
-use Potager\Grape\SimpleErrorCollector;
-use Potager\Grape\SimpleMessageProvider;
+use Potager\Grape\Contracts\ErrorCollectorContract;
+use Potager\Grape\Collectors\SimpleErrorCollector;
+use Potager\Grape\Messages\SimpleMessageProvider;
 
 describe('FieldContext', function () {
 

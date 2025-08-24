@@ -1,9 +1,10 @@
 <?php
 
-namespace Potager\Grape;
+namespace Potager\Grape\Collectors;
 
 use Potager\Grape\Contracts\ErrorCollectorContract;
 use Potager\Grape\Exceptions\ValidationException;
+use Potager\Grape\FieldContext;
 
 /**
  * Simple implementation of the ErrorCollectorContract.

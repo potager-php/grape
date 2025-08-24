@@ -3,7 +3,7 @@
 namespace Potager\Grape\Traits;
 
 use Potager\Grape\Contracts\MessageProviderContract;
-use Potager\Grape\SimpleMessageProvider;
+use Potager\Grape\Messages\SimpleMessageProvider;
 
 trait MessageConfiguration
 {

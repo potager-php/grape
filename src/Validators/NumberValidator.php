@@ -2,7 +2,7 @@
 
 namespace Potager\Grape\Validators;
 
-use Potager\Grape\DefaultMessages;
+use Potager\Grape\Messages\DefaultMessages;
 use Potager\Grape\FieldContext;
 
 /**
