@@ -12,7 +12,7 @@ interface MessageProviderContract
      * @param string $defaultMessage The default message to return if no custom message is defined.
      * @param string $rule The validation rule for which the message is requested.
      * @param FieldContext $field The field context containing information about the field being validated.
-     * @param array $meta Additional metadata that may be used to customize the message.
+     * @param array<string, mixed> $meta Additional metadata that may be used to customize the message.
      *
      * @return string The formatted message for the validation rule.
      */

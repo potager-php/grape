@@ -2,6 +2,8 @@
 
 namespace Potager\Grape\Helpers;
 
+use phpDocumentor\Reflection\Types\Array_;
+
 class ActiveUrl
 {
     public static function validate(string $string): bool
@@ -9,6 +11,6 @@ class ActiveUrl
         if (!Url::validate($string))
             return false;
         $headers = @get_headers($string);
-        return $headers && strpos($headers[0], '200' !== false);
+        return is_array($headers);
     }
 }

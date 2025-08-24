@@ -20,7 +20,7 @@ class SimpleErrorCollector implements ErrorCollectorContract
     protected ?string $message;
 
     /**
-     * @var array An array to store validation error messages grouped by field paths.
+     * @var array<array<string|int, mixed>> An array to store validation error messages grouped by field paths.
      */
     protected array $messages = [];
 

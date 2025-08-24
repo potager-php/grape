@@ -15,7 +15,7 @@ class ValidationException extends Exception
     /**
      * Validation error messages.
      * 
-     * @var array An array of validation error messages (format is defined by the used collector).
+     * @var array<mixed> An array of validation error messages (format is defined by the used collector).
      */
     protected array $messages;
 
@@ -29,7 +29,7 @@ class ValidationException extends Exception
     /**
      * Constructs a new ValidationException.
      * 
-     * @param array $messages Validation error messages.
+     * @param array<mixed> $messages Validation error messages.
      * @param string|null $message Optional exception message. Defaults to 'Validation failed'.
      */
     public function __construct(array $messages = [], ?string $message = null)
@@ -41,7 +41,7 @@ class ValidationException extends Exception
     /**
      * Retrieves the validation error messages.
      * 
-     * @return array An array of validation error messages.
+     * @return array<mixed> An array of validation error messages.
      */
     public function getMessages(): array
     {
