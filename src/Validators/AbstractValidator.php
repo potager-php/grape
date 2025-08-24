@@ -53,7 +53,7 @@ abstract class AbstractValidator
      */
     protected ?MessageProviderContract $messageProvider = null;
 
-    protected ?ErrorCollectorContract $errorCollector = null;
+    protected $errorCollectorFactory = null;
 
     /**
      * Validates a value against the configured rules and returns the processed value.
@@ -71,7 +71,7 @@ abstract class AbstractValidator
         $messageProvider ??= $this->messageProvider ?? Grape::getMessageProvider();
 
         // Retrieve the error collector for custom error formatting
-        $errorCollector ??= $this->errorCollector ?? Grape::getErrorCollector();
+        $errorCollector ??= $this->getErrorCollector() ?? Grape::getErrorCollector();
 
         // Create validation context to track errors and transformations
         $context = new FieldContext($value, null, messageProvider: $messageProvider, errorCollector: $errorCollector);
@@ -162,6 +162,26 @@ abstract class AbstractValidator
         return $this;
     }
 
+    public function setErrorCollector(callable $factory): static
+    {
+        $testInstance = $factory();
+        if (!$testInstance instanceof ErrorCollectorContract) {
+            throw new \InvalidArgumentException('The provided factory must return an instance of ErrorCollectorContract.');
+        }
+
+        $this->errorCollectorFactory = $factory;
+        return $this;
+    }
+
+    protected function getErrorCollector(): ?ErrorCollectorContract
+    {
+        if (!$this->errorCollectorFactory) {
+            return null;
+        }
+
+        $factory = $this->errorCollectorFactory;
+        return $factory();
+    }
     /**
      * Configures the validator to accept null values.
      * 

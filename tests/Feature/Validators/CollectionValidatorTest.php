@@ -89,6 +89,17 @@ it('can validate array length within range', function (): void {
     expect($result)->toBe([1, 2, 3]);
 });
 
+it('can validate array with fixed length', function () {
+    $validator = Grape::collection()->fixedLength(3);
+    $result = $validator->validate([1, 2, 3]);
+    expect($result)->toBe([1, 2, 3]);
+});
+
+it('can fail if array does not match fixed length', function () {
+    $validator = Grape::collection()->fixedLength(3);
+    $validator->validate([1, 2]);
+})->throws(ValidationException::class);
+
 // Empty/Not Empty Tests
 it('can validate empty array with empty constraint', function (): void {
     $validator = Grape::collection()->empty();
