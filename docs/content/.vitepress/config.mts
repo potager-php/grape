@@ -10,6 +10,7 @@ export default defineConfig({
 		},
 	},
 	themeConfig: {
+		siteTitle: '<span class="brand-ns">potager</span><span class="brand-sep">/</span><span class="brand-title">grape</span>',
 		search: {
 			provider: 'local',
 		},
@@ -60,6 +61,6 @@ export default defineConfig({
 				],
 			},
 		],
-		socialLinks: [{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }],
+		socialLinks: [{ icon: 'github', link: 'https://github.com/potagerphp/grape' }],
 	},
 });

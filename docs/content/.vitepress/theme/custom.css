@@ -1,11 +1,619 @@
-/* Pure Minimalist Sober Styles */
+/* ==========================================================================
+   Potager / Grape - Global Minimalist Theme Styles
+   ========================================================================== */
+
 :root {
+	/* Brand Accent */
 	--vp-c-brand-1: #8b5cf6;
 	--vp-c-brand-2: #7c3aed;
+	--vp-c-brand-3: #6d28d9;
 	--vp-c-brand-soft: rgba(139, 92, 246, 0.1);
+
+	/* Typography */
+	--vp-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	--vp-font-family-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+	/* Light Mode Base */
+	--vp-c-bg: #ffffff;
+	--vp-c-bg-alt: #f9f9fb;
+	--vp-c-bg-elv: #ffffff;
+	--vp-c-bg-soft: #f4f4f7;
+	--vp-c-bg-mute: #ebebf0;
+
+	--vp-c-text-1: #111113;
+	--vp-c-text-2: #52525b;
+	--vp-c-text-3: #8e8e99;
+
+	--vp-c-border: #e4e4e7;
+	--vp-c-divider: #ebebee;
+	--vp-c-gutter: #ebebee;
+
+	--vp-code-bg: #f9f9fb;
+	--vp-code-color: #111113;
+	--vp-code-copy-code-hover-bg: #ebebeb;
+
+	--vp-nav-bg-color: rgba(255, 255, 255, 0.85);
+	--vp-sidebar-bg-color: #ffffff;
 }
 
-/* Full Bleed Layout Overrides for Vitepress Page Mode */
+/* Dark Mode Overrides */
+.dark {
+	--vp-c-bg: #0c0c0f;
+	--vp-c-bg-alt: #111115;
+	--vp-c-bg-elv: #14141a;
+	--vp-c-bg-soft: #16161c;
+	--vp-c-bg-mute: #1d1d25;
+
+	--vp-c-text-1: #f4f4f6;
+	--vp-c-text-2: #a1a1aa;
+	--vp-c-text-3: #71717a;
+
+	--vp-c-border: #23232c;
+	--vp-c-divider: #1c1c24;
+	--vp-c-gutter: #1c1c24;
+
+	--vp-code-bg: #111115;
+	--vp-code-color: #f4f4f6;
+	--vp-code-copy-code-hover-bg: #23232c;
+
+	--vp-nav-bg-color: rgba(12, 12, 15, 0.85);
+	--vp-sidebar-bg-color: #0c0c0f;
+}
+
+/* ==========================================================================
+   Header & Navbar (Consistent Placement Across All Pages)
+   ========================================================================== */
+.VPNav {
+	border-bottom: 1px solid var(--vp-c-divider) !important;
+	background: var(--vp-nav-bg-color) !important;
+	backdrop-filter: blur(16px) !important;
+	-webkit-backdrop-filter: blur(16px) !important;
+}
+
+/* Reset absolute positioning and sidebar offsets on doc pages */
+@media (min-width: 960px) {
+	.VPNavBar.has-sidebar .wrapper {
+		padding: 0 32px !important;
+	}
+
+	.VPNavBar.has-sidebar .container {
+		max-width: calc(var(--vp-layout-max-width) - 64px) !important;
+	}
+
+	.VPNavBar.has-sidebar .title {
+		position: static !important;
+		width: auto !important;
+		padding: 0 !important;
+		background-color: transparent !important;
+	}
+
+	.VPNavBar.has-sidebar .content {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	.VPNavBar.has-sidebar .content-body {
+		background-color: transparent !important;
+	}
+}
+
+@media (min-width: 1440px) {
+	.VPNavBar.has-sidebar .title {
+		padding-left: 0 !important;
+		width: auto !important;
+	}
+
+	.VPNavBar.has-sidebar .content {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+}
+
+.VPNavBar .container {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: space-between !important;
+}
+
+.VPNavBar .content {
+	flex-grow: 1 !important;
+	display: flex !important;
+}
+
+.VPNavBar .content-body {
+	width: 100% !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: space-between !important;
+}
+
+.VPNavBarSearch.search {
+	margin-right: auto !important;
+	padding-left: 1.5rem !important;
+}
+
+.VPNavBarTitle,
+.VPNavBarTitle.has-sidebar {
+	display: flex !important;
+	align-items: center !important;
+	width: auto !important;
+	min-width: auto !important;
+	max-width: none !important;
+	margin-right: 0 !important;
+	border-bottom: none !important;
+	padding-bottom: 0 !important;
+}
+
+.VPNavBarTitle a.title {
+	display: inline-flex !important;
+	align-items: center !important;
+	gap: 0.35rem !important;
+	font-family: var(--vp-font-family-mono) !important;
+	text-decoration: none !important;
+	transition: opacity 0.15s ease !important;
+}
+
+.VPNavBarTitle a.title:hover {
+	opacity: 0.8 !important;
+}
+
+.VPNavBarTitle .brand-ns {
+	color: var(--vp-c-text-3) !important;
+	font-weight: 500 !important;
+	font-size: 0.875rem !important;
+	letter-spacing: -0.01em !important;
+}
+
+.VPNavBarTitle .brand-sep {
+	color: var(--vp-c-text-3) !important;
+	font-size: 0.8125rem !important;
+	opacity: 0.5 !important;
+	margin: 0 0.1rem !important;
+}
+
+.VPNavBarTitle .brand-title {
+	color: var(--vp-c-text-1) !important;
+	font-weight: 700 !important;
+	font-size: 1rem !important;
+	letter-spacing: -0.03em !important;
+}
+
+.VPNavBarMenuLink {
+	font-size: 0.875rem !important;
+	font-weight: 500 !important;
+	color: var(--vp-c-text-2) !important;
+	transition: color 0.15s ease !important;
+}
+
+.VPNavBarMenuLink:hover,
+.VPNavBarMenuLink.active {
+	color: var(--vp-c-text-1) !important;
+}
+
+/* Search Bar Pill (Wider & Styled) */
+.DocSearch-Button,
+.VPNavBarSearchButton {
+	min-width: 220px !important;
+	width: 240px !important;
+	height: 38px !important;
+	background: var(--vp-c-bg-alt) !important;
+	border: 1px solid var(--vp-c-border) !important;
+	border-radius: 6px !important;
+	padding: 0 0.85rem !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: space-between !important;
+	font-family: var(--vp-font-family-mono) !important;
+	font-size: 0.8125rem !important;
+	color: var(--vp-c-text-3) !important;
+	transition: all 0.15s ease !important;
+}
+
+.DocSearch-Button:hover,
+.VPNavBarSearchButton:hover {
+	border-color: var(--vp-c-text-3) !important;
+	background: var(--vp-c-bg-soft) !important;
+	color: var(--vp-c-text-2) !important;
+}
+
+.DocSearch-Button-Placeholder,
+.VPNavBarSearchButton .placeholder {
+	font-size: 0.8125rem !important;
+	color: var(--vp-c-text-3) !important;
+	padding: 0 !important;
+}
+
+.DocSearch-Button-Key,
+.VPNavBarSearchButton .key {
+	font-family: var(--vp-font-family-mono) !important;
+	font-size: 0.6875rem !important;
+	font-weight: 500 !important;
+	background: var(--vp-c-bg-mute) !important;
+	border: 1px solid var(--vp-c-border) !important;
+	border-radius: 4px !important;
+	padding: 0.1rem 0.35rem !important;
+	color: var(--vp-c-text-3) !important;
+}
+
+/* ==========================================================================
+   Sidebar Navigation (Clean Monochrome Minimalist Theme)
+   ========================================================================== */
+.VPSidebar {
+	border-right: 1px solid var(--vp-c-divider) !important;
+	--vp-c-brand-1: var(--vp-c-text-1) !important;
+	--vp-c-brand-2: var(--vp-c-text-1) !important;
+	--vp-c-brand-3: var(--vp-c-text-1) !important;
+	--vp-c-brand-soft: var(--vp-c-bg-soft) !important;
+}
+
+/* Category Headers (GUIDE, TYPES & STRUCTURES) */
+.VPSidebarItem.level-0 > .item .text {
+	font-family: var(--vp-font-family-mono) !important;
+	font-size: 0.8rem !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.08em !important;
+	color: var(--vp-c-text-3) !important;
+	font-weight: 600 !important;
+}
+
+/* Sub-group Headers (Type Validators, Array Validators) */
+.VPSidebarItem.level-1.has-nested > .item .text {
+	font-size: 0.925rem !important;
+	font-weight: 600 !important;
+	color: var(--vp-c-text-2) !important;
+}
+
+.VPSidebarItem .caret {
+	color: var(--vp-c-text-3) !important;
+}
+
+.VPSidebarItem:hover > .item .caret {
+	color: var(--vp-c-text-1) !important;
+}
+
+/* Tree Indentation Guide Lines */
+.VPSidebarItem.level-0 > .items {
+	border-left: none !important;
+	padding-left: 0 !important;
+}
+
+.VPSidebarItem.level-1 .items,
+.VPSidebarItem.level-2 .items {
+	border-left: 1px solid var(--vp-c-divider) !important;
+}
+
+/* Link Typography & States */
+.VPSidebarItem .text {
+	font-size: 0.925rem !important;
+	line-height: 26px !important;
+	color: var(--vp-c-text-3) !important;
+	transition: color 0.15s ease !important;
+}
+
+.VPSidebarItem .link:hover .text {
+	color: var(--vp-c-text-1) !important;
+}
+
+.VPSidebarItem.is-active > .item .text,
+.VPSidebarItem.is-active > .item .link .text {
+	color: var(--vp-c-text-1) !important;
+	font-weight: 600 !important;
+}
+
+/* Active Indicator (Superimposed directly on the indentation guide line) */
+.VPSidebarItem .indicator {
+	background-color: transparent !important;
+	width: 2.5px !important;
+	border-radius: 2px !important;
+	transition: background-color 0.15s ease !important;
+}
+
+.VPSidebarItem.is-active > .item > .indicator {
+	background-color: var(--vp-c-text-1) !important;
+}
+
+/* ==========================================================================
+   Documentation Content Typography (.vp-doc)
+   ========================================================================== */
+.vp-doc {
+	color: var(--vp-c-text-2);
+}
+
+.vp-doc h1 {
+	font-size: clamp(2rem, 3.5vw, 2.65rem) !important;
+	font-weight: 700 !important;
+	letter-spacing: -0.03em !important;
+	color: var(--vp-c-text-1) !important;
+	margin-bottom: 1.5rem !important;
+	line-height: 1.2 !important;
+}
+
+.vp-doc h2 {
+	font-size: 1.45rem !important;
+	font-weight: 600 !important;
+	letter-spacing: -0.02em !important;
+	color: var(--vp-c-text-1) !important;
+	margin-top: 3.25rem !important;
+	padding-bottom: 0.5rem !important;
+	border-bottom: 1px solid var(--vp-c-divider) !important;
+}
+
+.vp-doc h3 {
+	font-size: 1.15rem !important;
+	font-weight: 600 !important;
+	letter-spacing: -0.01em !important;
+	color: var(--vp-c-text-1) !important;
+	margin-top: 2.25rem !important;
+}
+
+.vp-doc p,
+.vp-doc li {
+	line-height: 1.7 !important;
+	font-size: 0.95rem !important;
+}
+
+.vp-doc strong {
+	color: var(--vp-c-text-1) !important;
+	font-weight: 600 !important;
+}
+
+.vp-doc a {
+	color: var(--vp-c-text-1) !important;
+	font-weight: 500 !important;
+	text-decoration: underline !important;
+	text-underline-offset: 3px !important;
+	text-decoration-color: var(--vp-c-border) !important;
+	transition: text-decoration-color 0.15s ease !important;
+}
+
+.vp-doc a:hover {
+	text-decoration-color: var(--vp-c-text-1) !important;
+}
+
+/* Inline Code */
+.vp-doc :not(pre) > code {
+	font-family: var(--vp-font-family-mono) !important;
+	font-size: 0.8125rem !important;
+	padding: 0.15rem 0.4rem !important;
+	background: var(--vp-c-bg-mute) !important;
+	border: 1px solid var(--vp-c-border) !important;
+	border-radius: 4px !important;
+	color: var(--vp-c-text-1) !important;
+}
+
+/* Code Blocks & Code Groups (.vp-code-group) matching Homepage Style */
+.vp-doc div[class*='language-'],
+.vp-code-group {
+	border: 1px solid var(--vp-c-border) !important;
+	border-radius: 8px !important;
+	overflow: hidden !important;
+	background: var(--vp-c-bg-alt) !important;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+	margin: 1.75rem 0 !important;
+}
+
+/* Tabs Bar in Code Groups */
+.vp-code-group .tabs {
+	display: flex !important;
+	background: var(--vp-c-bg-mute) !important;
+	border-bottom: 1px solid var(--vp-c-border) !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	box-shadow: none !important;
+	border-radius: 0 !important;
+	overflow-x: auto !important;
+}
+
+/* Individual Tab */
+.vp-code-group .tabs label {
+	padding: 0.75rem 1.25rem !important;
+	font-family: var(--vp-font-family-mono) !important;
+	font-size: 0.8125rem !important;
+	font-weight: 500 !important;
+	color: var(--vp-c-text-2) !important;
+	background: transparent !important;
+	border: none !important;
+	border-bottom: 2px solid transparent !important;
+	line-height: normal !important;
+	cursor: pointer !important;
+	white-space: nowrap !important;
+	margin: 0 !important;
+	transition: all 0.15s ease !important;
+}
+
+.vp-code-group .tabs label:hover {
+	color: var(--vp-c-text-1) !important;
+	background: rgba(255, 255, 255, 0.02) !important;
+}
+
+.vp-code-group .tabs label::after {
+	display: none !important;
+}
+
+/* Active Tab */
+.vp-code-group input:checked + label {
+	color: var(--vp-c-text-1) !important;
+	font-weight: 600 !important;
+	border-bottom: 2px solid var(--vp-c-text-1) !important;
+	background: var(--vp-c-bg-alt) !important;
+}
+
+/* Code Inside Code Group Blocks */
+.vp-code-group div[class*='language-'] {
+	border: none !important;
+	border-radius: 0 !important;
+	margin: 0 !important;
+	box-shadow: none !important;
+	background: transparent !important;
+}
+
+.vp-doc div[class*='language-'] pre,
+.vp-code-group div[class*='language-'] pre {
+	padding: 1.4rem 1.5rem !important;
+	font-family: var(--vp-font-family-mono) !important;
+	font-size: 0.85rem !important;
+	line-height: 1.7 !important;
+	background: transparent !important;
+}
+
+/* Language Tag inside code blocks */
+.vp-doc div[class*='language-'] > span.lang,
+.vp-code-group div[class*='language-'] > span.lang {
+	font-family: var(--vp-font-family-mono) !important;
+	font-size: 0.6875rem !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.06em !important;
+	color: var(--vp-c-text-3) !important;
+	top: 10px !important;
+	right: 14px !important;
+}
+
+/* Copy Button Styling */
+.vp-doc div[class*='language-'] > button.copy,
+.vp-code-group div[class*='language-'] > button.copy {
+	top: 10px !important;
+	right: 12px !important;
+	border-radius: 6px !important;
+	background: var(--vp-c-bg-soft) !important;
+	border: 1px solid var(--vp-c-border) !important;
+	opacity: 0 !important;
+	transition: opacity 0.15s ease, border-color 0.15s ease !important;
+}
+
+.vp-doc div[class*='language-']:hover > button.copy,
+.vp-code-group div[class*='language-']:hover > button.copy {
+	opacity: 1 !important;
+}
+
+.vp-doc div[class*='language-'] > button.copy:hover,
+.vp-code-group div[class*='language-'] > button.copy:hover {
+	border-color: var(--vp-c-text-3) !important;
+}
+
+/* Tables */
+.vp-doc table {
+	width: 100% !important;
+	border-collapse: collapse !important;
+	margin: 1.75rem 0 !important;
+	border: 1px solid var(--vp-c-border) !important;
+	border-radius: 8px !important;
+	overflow: hidden !important;
+}
+
+.vp-doc th {
+	font-family: var(--vp-font-family-mono) !important;
+	font-size: 0.775rem !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.06em !important;
+	color: var(--vp-c-text-3) !important;
+	background: var(--vp-c-bg-alt) !important;
+	padding: 0.75rem 1rem !important;
+	border-bottom: 1px solid var(--vp-c-border) !important;
+	border-right: 1px solid var(--vp-c-divider) !important;
+}
+
+.vp-doc td {
+	padding: 0.75rem 1rem !important;
+	font-size: 0.875rem !important;
+	border-bottom: 1px solid var(--vp-c-divider) !important;
+	border-right: 1px solid var(--vp-c-divider) !important;
+}
+
+.vp-doc tr:hover td {
+	background: var(--vp-c-bg-soft) !important;
+}
+
+/* Callout / Custom Block Cards */
+.vp-doc .custom-block {
+	border-radius: 8px !important;
+	border: 1px solid var(--vp-c-border) !important;
+	background: var(--vp-c-bg-alt) !important;
+	padding: 1.15rem 1.4rem !important;
+	margin: 1.5rem 0 !important;
+}
+
+.vp-doc .custom-block.tip {
+	border-left: 3px solid #10b981 !important;
+}
+
+.vp-doc .custom-block.info {
+	border-left: 3px solid #38bdf8 !important;
+}
+
+.vp-doc .custom-block.warning {
+	border-left: 3px solid #f59e0b !important;
+}
+
+.vp-doc .custom-block.danger {
+	border-left: 3px solid #ef4444 !important;
+}
+
+.vp-doc .custom-block .custom-block-title {
+	font-family: var(--vp-font-family-mono) !important;
+	font-size: 0.8125rem !important;
+	font-weight: 600 !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.06em !important;
+	margin-bottom: 0.4rem !important;
+	color: var(--vp-c-text-1) !important;
+}
+
+/* Previous & Next Page Navigation Cards */
+.VPDocFooter .pager-link {
+	border: 1px solid var(--vp-c-border) !important;
+	border-radius: 8px !important;
+	background: var(--vp-c-bg-alt) !important;
+	padding: 1rem 1.25rem !important;
+	transition: all 0.15s ease !important;
+}
+
+.VPDocFooter .pager-link:hover {
+	border-color: var(--vp-c-text-3) !important;
+	background: var(--vp-c-bg-soft) !important;
+}
+
+.VPDocFooter .desc {
+	font-family: var(--vp-font-family-mono) !important;
+	font-size: 0.725rem !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.06em !important;
+	color: var(--vp-c-text-3) !important;
+}
+
+.VPDocFooter .title {
+	font-size: 0.95rem !important;
+	font-weight: 600 !important;
+	color: var(--vp-c-text-1) !important;
+}
+
+/* Table of Contents (On this page) */
+.VPDocAsideOutline .outline-title {
+	font-family: var(--vp-font-family-mono) !important;
+	font-size: 0.75rem !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.08em !important;
+	color: var(--vp-c-text-3) !important;
+	font-weight: 600 !important;
+}
+
+.VPDocAsideOutline .outline-link {
+	font-size: 0.8125rem !important;
+	color: var(--vp-c-text-3) !important;
+	transition: color 0.15s ease !important;
+}
+
+.VPDocAsideOutline .outline-link:hover,
+.VPDocAsideOutline .outline-link.active {
+	color: var(--vp-c-text-1) !important;
+}
+
+.VPDocAsideOutline .outline-marker {
+	background: var(--vp-c-text-1) !important;
+}
+
+/* ==========================================================================
+   Full-Bleed Homepage Styles
+   ========================================================================== */
 .VPDoc:not(.has-sidebar) .container,
 .VPDoc:not(.has-sidebar) .content {
 	max-width: 100% !important;
