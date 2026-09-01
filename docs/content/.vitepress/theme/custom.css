@@ -634,15 +634,15 @@
 	margin-left: -50vw;
 	margin-right: -50vw;
 	padding: 9.5rem 0 11rem;
-	border-bottom: 1px solid var(--vp-c-divider);
+	border-bottom: none;
 	overflow: hidden;
 }
 
 .hero-bg {
 	position: absolute;
-	inset: 0;
-	width: 100%;
-	height: 100%;
+	inset: -12%;
+	width: 124%;
+	height: 124%;
 	background-image: url('/assets/hero-bg.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -651,12 +651,224 @@
 	pointer-events: none;
 	z-index: 0;
 	filter: grayscale(100%) contrast(115%);
-	-webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
-	mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
+	transform: scale(1.15);
+	-webkit-mask-image: linear-gradient(
+		to bottom,
+		rgba(0, 0, 0, 1) 0%,
+		rgba(0, 0, 0, 0.85) 20%,
+		rgba(0, 0, 0, 0.45) 50%,
+		rgba(0, 0, 0, 0.12) 75%,
+		rgba(0, 0, 0, 0) 90%
+	);
+	mask-image: linear-gradient(
+		to bottom,
+		rgba(0, 0, 0, 1) 0%,
+		rgba(0, 0, 0, 0.85) 20%,
+		rgba(0, 0, 0, 0.45) 50%,
+		rgba(0, 0, 0, 0.12) 75%,
+		rgba(0, 0, 0, 0) 90%
+	);
 }
 
 html:not(.dark) .hero-bg {
 	opacity: 0.22;
+}
+
+/* Elegant Arc of Circle Bottom Divider */
+.hero-arc-separator {
+	position: absolute;
+	bottom: -1px;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 80px;
+	line-height: 0;
+	pointer-events: none;
+	z-index: 1;
+}
+
+.hero-arc-separator svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.hero-container {
+	max-width: 1180px;
+	margin: 0 auto;
+	padding: 0 2rem;
+	position: relative;
+	z-index: 2;
+}
+
+/* ==========================================================================
+   Local Search Modal Redesign (.VPLocalSearchBox)
+   ========================================================================== */
+.VPLocalSearchBox .backdrop {
+	background: rgba(0, 0, 0, 0.72) !important;
+	backdrop-filter: blur(12px) !important;
+	-webkit-backdrop-filter: blur(12px) !important;
+}
+
+.VPLocalSearchBox .shell {
+	background: var(--vp-c-bg) !important;
+	border: 1px solid var(--vp-c-border) !important;
+	border-radius: 12px !important;
+	box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+	padding: 16px !important;
+	gap: 14px !important;
+	max-width: 640px !important;
+}
+
+.VPLocalSearchBox .search-bar {
+	background: var(--vp-c-bg-alt) !important;
+	border: 1px solid var(--vp-c-border) !important;
+	border-radius: 8px !important;
+	padding: 0.45rem 0.85rem !important;
+	transition: all 0.15s ease !important;
+}
+
+.VPLocalSearchBox .search-bar:focus-within {
+	border-color: var(--vp-c-text-1) !important;
+	background: var(--vp-c-bg-soft) !important;
+	box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08) !important;
+}
+
+.VPLocalSearchBox .search-input {
+	font-family: var(--vp-font-family-mono) !important;
+	font-size: 0.925rem !important;
+	color: var(--vp-c-text-1) !important;
+}
+
+.VPLocalSearchBox .search-input::placeholder {
+	color: var(--vp-c-text-3) !important;
+	font-family: var(--vp-font-family-mono) !important;
+}
+
+.VPLocalSearchBox .search-icon {
+	color: var(--vp-c-text-3) !important;
+}
+
+.VPLocalSearchBox .results {
+	gap: 6px !important;
+	max-height: 420px !important;
+	padding-right: 4px !important;
+}
+
+.VPLocalSearchBox .result {
+	background: transparent !important;
+	border: 1px solid transparent !important;
+	border-radius: 8px !important;
+	padding: 0.65rem 0.85rem !important;
+	transition: all 0.15s ease !important;
+	cursor: pointer !important;
+}
+
+.VPLocalSearchBox .result > div {
+	margin: 0 !important;
+	width: 100% !important;
+	overflow: hidden !important;
+}
+
+.VPLocalSearchBox .result.selected,
+.VPLocalSearchBox .result:hover {
+	background: var(--vp-c-bg-soft) !important;
+	border-color: var(--vp-c-border) !important;
+}
+
+/* Hide outdated # icon in search results */
+.VPLocalSearchBox .title-icon {
+	display: none !important;
+}
+
+.VPLocalSearchBox .titles {
+	display: flex !important;
+	flex-wrap: nowrap !important;
+	align-items: center !important;
+	gap: 6px !important;
+	overflow: hidden !important;
+	white-space: nowrap !important;
+	text-overflow: ellipsis !important;
+	width: 100% !important;
+}
+
+.VPLocalSearchBox .title:not(.main) {
+	font-size: 0.8125rem !important;
+	color: var(--vp-c-text-3) !important;
+	flex-shrink: 0 !important;
+}
+
+.VPLocalSearchBox .local-search-icon {
+	font-size: 10px !important;
+	color: var(--vp-c-text-3) !important;
+	opacity: 0.4 !important;
+	margin: 0 1px !important;
+}
+
+.VPLocalSearchBox .title.main {
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	white-space: nowrap !important;
+	flex-shrink: 1 !important;
+	min-width: 0 !important;
+}
+
+.VPLocalSearchBox .title.main .text {
+	font-family: var(--vp-font-family-mono) !important;
+	font-size: 0.9rem !important;
+	font-weight: 600 !important;
+	color: var(--vp-c-text-1) !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	white-space: nowrap !important;
+}
+
+.VPLocalSearchBox .excerpt-wrapper {
+	margin-top: 0.35rem !important;
+	position: relative !important;
+}
+
+.VPLocalSearchBox .excerpt-gradient-bottom,
+.VPLocalSearchBox .excerpt-gradient-top {
+	display: none !important;
+}
+
+.VPLocalSearchBox .excerpt {
+	font-size: 0.8125rem !important;
+	color: var(--vp-c-text-2) !important;
+	line-height: 1.55 !important;
+	display: -webkit-box !important;
+	-webkit-line-clamp: 2 !important;
+	-webkit-box-orient: vertical !important;
+	overflow: hidden !important;
+}
+
+.VPLocalSearchBox mark {
+	background: transparent !important;
+	color: var(--vp-c-text-1) !important;
+	text-decoration: underline !important;
+	text-decoration-color: var(--vp-c-text-1) !important;
+	font-weight: 600 !important;
+}
+
+.VPLocalSearchBox .search-keyboard-shortcuts {
+	border-top: 1px solid var(--vp-c-divider) !important;
+	padding-top: 12px !important;
+	margin-top: 4px !important;
+	color: var(--vp-c-text-3) !important;
+	font-family: var(--vp-font-family-mono) !important;
+	font-size: 0.725rem !important;
+}
+
+.VPLocalSearchBox .search-keyboard-shortcuts kbd {
+	background: var(--vp-c-bg-alt) !important;
+	border: 1px solid var(--vp-c-border) !important;
+	border-radius: 4px !important;
+	color: var(--vp-c-text-2) !important;
+	font-family: var(--vp-font-family-mono) !important;
+	font-size: 0.6875rem !important;
+	padding: 2px 5px !important;
+	box-shadow: none !important;
 }
 
 .hero-container {
