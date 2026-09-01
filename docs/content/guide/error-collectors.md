@@ -40,7 +40,8 @@ Here is an example of what the error array might look like:
 The default message for `ValidationException` is "Validation failed." You can customize this message by setting up a custom instance of `SimpleErrorCollector`:
 
 ```php
-use Potager\Grape\SimpleErrorCollector;
+use Potager\Grape\Collectors\SimpleErrorCollector;
+use Potager\Grape\Grape;
 
 $errorCollectorFactory = fn () => new SimpleErrorCollector("Your custom exception message");
 Grape::setErrorCollector($errorCollectorFactory);
@@ -116,9 +117,9 @@ $validator->setErrorCollector($errorCollectorFactory);
 ### Register for a Single Validation Call
 
 ```php
-$errorCollectorFactory = fn () => new CustomErrorCollector();
+$collector = new CustomErrorCollector();
 
 $validator = Grape::string();
 
-$validator->validate($payload, errorCollector: $errorCollectorFactory);
+$validator->validate($payload, errorCollector: $collector);
 ```

@@ -15,7 +15,8 @@ Grape includes the `SimpleMessageProvider` class, which makes it easy to set up 
 Simply pass an array of custom messages to the `SimpleMessageProvider` constructor. Keys can be rule names or a fully qualified field path + rule name, and values are the corresponding custom messages.
 
 ```php
-use Potager\Grape\SimpleMessageProvider;
+use Potager\Grape\Messages\SimpleMessageProvider;
+use Potager\Grape\Grape;
 
 Grape::setMessageProvider(new SimpleMessageProvider([
     // Applies to all fields
@@ -32,7 +33,8 @@ Grape::setMessageProvider(new SimpleMessageProvider([
 You may want to define messages for specific fields within a nested structure. Using dot notation, you can specify the full path to the field, followed by the rule name.
 
 ```php
-use Potager\Grape\SimpleMessageProvider;
+use Potager\Grape\Messages\SimpleMessageProvider;
+use Potager\Grape\Grape;
 
 Grape::setMessageProvider(new SimpleMessageProvider([
     'user.email.email' => 'Please provide a valid email address for the user.',
@@ -45,7 +47,8 @@ Grape::setMessageProvider(new SimpleMessageProvider([
 You can also use wildcards to target all children of an array (useful for validating collections).
 
 ```php
-use Potager\Grape\SimpleMessageProvider;
+use Potager\Grape\Messages\SimpleMessageProvider;
+use Potager\Grape\Grape;
 
 Grape::setMessageProvider(new SimpleMessageProvider([
     'tags.*.color.required' => 'Please provide a color for each tag of the user.',
@@ -56,7 +59,8 @@ Grape::setMessageProvider(new SimpleMessageProvider([
 If you want to target the root element directly, note that the root path is `""`. Using just the rule name will apply the message to **all** fields using that rule. To ensure it applies only to the root, prefix the rule with a dot.
 
 ```php
-use Potager\Grape\SimpleMessageProvider;
+use Potager\Grape\Messages\SimpleMessageProvider;
+use Potager\Grape\Grape;
 
 Grape::setMessageProvider(new SimpleMessageProvider([
     '.required' => 'Please provide a value for the root element.',
@@ -71,7 +75,8 @@ You can use placeholders such as `{field}` in your messages. These will be dynam
 The `{field}` placeholder is always available. Other placeholders depend on the rule—refer to the rule documentation to see which are supported.
 
 ```php
-use Potager\Grape\SimpleMessageProvider;
+use Potager\Grape\Messages\SimpleMessageProvider;
+use Potager\Grape\Grape;
 
 Grape::setMessageProvider(new SimpleMessageProvider([
     "string" => "The {field} must be a string.",
@@ -87,7 +92,8 @@ Grape::setMessageProvider(new SimpleMessageProvider([
 Simply pass a second array to the constructor, mapping original field names to their aliases.
 
 ```php
-use Potager\Grape\SimpleMessageProvider;
+use Potager\Grape\Messages\SimpleMessageProvider;
+use Potager\Grape\Grape;
 
 Grape::setMessageProvider(new SimpleMessageProvider([
     // Custom messages if needed
@@ -130,7 +136,8 @@ You can register a message provider globally, per validator, or per validation c
 ### Register Globally
 
 ```php
-use Potager\Grape\SimpleMessageProvider;
+use Potager\Grape\Messages\SimpleMessageProvider;
+use Potager\Grape\Grape;
 
 $provider = new SimpleMessageProvider();
 
@@ -140,7 +147,8 @@ Grape::setMessageProvider($provider);
 ### Register on a Validator
 
 ```php
-use Potager\Grape\SimpleMessageProvider;
+use Potager\Grape\Messages\SimpleMessageProvider;
+use Potager\Grape\Grape;
 
 $provider = new SimpleMessageProvider();
 
@@ -152,7 +160,8 @@ $validator->setMessageProvider($provider);
 ### Register Per Call
 
 ```php
-use Potager\Grape\SimpleMessageProvider;
+use Potager\Grape\Messages\SimpleMessageProvider;
+use Potager\Grape\Grape;
 
 $provider = new SimpleMessageProvider();
 

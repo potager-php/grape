@@ -35,9 +35,9 @@ class FieldContext
      * across the entire validation tree. This is the same instance used by all
      * contexts in the validation hierarchy.
      *
-     * @return ValidationErrorCollectorInterface The error collector instance
+     * @return ErrorCollectorContract The error collector instance
      */
-    public function getCollector(): ValidationErrorCollectorInterface;
+    public function getCollector(): ErrorCollectorContract;
 
     /**
      * Returns the name or index of the current field.

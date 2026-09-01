@@ -28,6 +28,8 @@ export default defineConfig({
 					{ text: 'Field Context', link: '/guide/field-context' },
 					{ text: 'Error Collector', link: '/guide/error-collectors' },
 					{ text: 'Required & Nullable', link: '/guide/required-and-nullable' },
+					{ text: 'Validation Helpers', link: '/guide/helpers' },
+					{ text: 'Global Configuration', link: '/guide/global-configuration' },
 				],
 			},
 			{

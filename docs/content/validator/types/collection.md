@@ -104,20 +104,20 @@ $validator = Grape::schema([
 ]);
 ```
 
-## Transform the keys
+## Mutate the keys
 
-You can also transform the keys of a collection using the `transformKeys()` API. This method accepts a callable that will be applied to each key in the collection, allowing you to modify the keys as needed. The method receives the key and should return the transformed key. This is useful for normalizing or formatting keys before further processing.
+You can also transform the keys of a collection using the `mutateKeys()` API. This method accepts a callable that will be applied to each key in the collection, allowing you to modify the keys as needed. The method receives the key and should return the transformed key. This is useful for normalizing or formatting keys before further processing.
 
 ```php
 $validator = Grape::schema([
-    "items" => Grape::collection()->transformKeys(function ($key) {
+    "items" => Grape::collection()->mutateKeys(function ($key) {
         return strtoupper($key);
     }),
 ]);
 ```
 
 ::: warning Order is Important
-If you use `normalize()` after `transformKeys()`, the keys will be reindexed to sequential numeric keys, which means the transformations will not be applied to the final output. Use `transformKeys()` **after** `normalize()` if you want to ensure your transformations are applied to the final output.
+If you use `normalize()` after `mutateKeys()`, the keys will be reindexed to sequential numeric keys, which means the transformations will not be applied to the final output. Use `mutateKeys()` **after** `normalize()` if you want to ensure your transformations are applied to the final output.
 :::
 
 ## Error Messages

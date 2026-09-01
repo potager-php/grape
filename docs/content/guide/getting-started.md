@@ -55,8 +55,25 @@ try {
 }
 ```
 
-The `ValidationException->getMessages()` methods returns an array of validation error messages, which can be used to inform the user about what went wrong.
+The `ValidationException->getMessages()` method returns an array of validation error messages, which can be used to inform the user about what went wrong.
 Messages are grouped by field and include details about the validation rule that failed.
+
+## Validate Without Exceptions (`check`)
+
+If you prefer a functional error-handling approach without `try/catch` blocks, use the `check()` method. It returns a tuple `[$error, $data]`:
+
+```php
+[$error, $data] = $validator->check($data);
+
+if ($error !== null) {
+    // Validation failed
+    $errors = $error->getMessages();
+    return response()->json(['errors' => $errors], 422);
+}
+
+// Validation succeeded - use sanitized $data
+$name = $data['name'];
+```
 
 ### Error Array Structure
 
