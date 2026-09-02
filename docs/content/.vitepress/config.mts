@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress';
 import { siteConfig } from './site.config';
 
 export default defineConfig({
+	base: process.env.DOCS_BASE || (process.env.GITHUB_PAGES ? '/grape/' : '/'),
 	title: 'Grape',
 	description: siteConfig.tagline,
 	appearance: 'dark',
