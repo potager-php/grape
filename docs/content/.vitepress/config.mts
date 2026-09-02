@@ -1,8 +1,10 @@
 import { defineConfig } from 'vitepress';
 import { siteConfig } from './site.config';
 
+const base = process.env.DOCS_BASE || (process.env.GITHUB_PAGES ? '/grape/' : '/');
+
 export default defineConfig({
-	base: process.env.DOCS_BASE || (process.env.GITHUB_PAGES ? '/grape/' : '/'),
+	base,
 	title: 'Grape',
 	description: siteConfig.tagline,
 	appearance: 'dark',
@@ -17,8 +19,8 @@ export default defineConfig({
 			{},
 			`html.dark{background-color:#0c0c0f!important;color-scheme:dark;}html:not(.dark){background-color:#ffffff;color-scheme:light;}body{background-color:inherit;}`
 		],
-		['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
-		['link', { rel: 'icon', href: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍇</text></svg>' }],
+		['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}favicon.svg` }],
+		['link', { rel: 'icon', href: 'data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Ctext%20y=%22.9em%22%20font-size=%2290%22%3E%F0%9F%8D%87%3C/text%3E%3C/svg%3E' }],
 	],
 	markdown: {
 		theme: {
