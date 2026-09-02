@@ -128,7 +128,7 @@ class FieldContext
      */
     public function __construct(
         mixed &$value,
-        string|int|null $name = null,
+        string|int|null $name,
         MessageProviderContract $messageProvider,
         ErrorCollectorContract $errorCollector,
         ?FieldContext $parent = null,

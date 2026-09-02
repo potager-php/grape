@@ -17,13 +17,6 @@ use Potager\Grape\Messages\DefaultMessages;
 class StringValidator extends AbstractValidator
 {
     /**
-     * Whether to convert empty strings to null values.
-     * 
-     * @var bool
-     */
-    private bool $convertEmptyStringToNull = false;
-
-    /**
      * Create a new string validator instance.
      * 
      * @param bool $strict Whether to enforce strict string type checking.
@@ -32,8 +25,7 @@ class StringValidator extends AbstractValidator
      */
     public function __construct(bool $strict)
     {
-        $convertEmptyStringToNull = $this->convertEmptyStringToNull;
-        $this->rules[] = function (FieldContext $ctx) use ($strict, $convertEmptyStringToNull): void {
+        $this->rules[] = function (FieldContext $ctx) use ($strict): void {
             $value = $ctx->getValue();
             if ($strict && !is_string($value))
                 $ctx->fatal(DefaultMessages::$messages['string'], 'string');

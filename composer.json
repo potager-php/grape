@@ -1,37 +1,54 @@
 {
     "name": "potagerphp/grape",
     "description": "Type-safe schema validation and data sanitization for PHP 8.2+.",
+    "keywords": [
+        "validation",
+        "validator",
+        "sanitizer",
+        "schema",
+        "type-safe",
+        "contracts",
+        "potager"
+    ],
     "type": "library",
+    "license": "MIT",
     "homepage": "https://github.com/potager-php/grape",
     "support": {
         "source": "https://github.com/potager-php/grape",
         "issues": "https://github.com/potager-php/grape/issues"
     },
-    "require": {
-        "php": ">=8.1"
-    },
-    "autoload": {
-        "psr-4": {
-            "Potager\\Grape\\": "src/",
-            "Tests\\": "tests/"
-        }
-    },
     "authors": [
         {
-            "name": "Theo",
-            "email": "your-email@example.com"
+            "name": "theo_vdml"
         }
     ],
-    "license": "MIT",
-    "minimum-stability": "stable",
+    "require": {
+        "php": ">=8.2"
+    },
     "require-dev": {
         "pestphp/pest": "^3.8",
         "mockery/mockery": "^1.6",
         "phpstan/phpstan": "^2.1"
     },
+    "autoload": {
+        "psr-4": {
+            "Potager\\Grape\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
     "config": {
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
+    },
+    "scripts": {
+        "test": "pest",
+        "test:coverage": "pest --coverage",
+        "analyse": "phpstan analyse"
     }
 }

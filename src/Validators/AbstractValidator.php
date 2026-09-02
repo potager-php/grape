@@ -103,7 +103,7 @@ abstract class AbstractValidator
      * @param MessageProviderContract|null $messageProvider Optional custom message provider
      * @return array{0:ValidationException|null,1:mixed|null} Tuple [error, value]
      */
-    public function check($value, MessageProviderContract $messageProvider = null): array
+    public function check($value, ?MessageProviderContract $messageProvider = null): array
     {
         try {
             // Attempt to validate the value and return the validated value as the second element of the tuple

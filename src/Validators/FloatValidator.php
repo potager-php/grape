@@ -42,7 +42,7 @@ class FloatValidator extends NumberValidatorBase
      * Rounds the field value to the specified precision.
      * 
      * @param int $precision The number of decimal digits to round to. Defaults to 0.
-     * @param int $mode The rounding mode. Defaults to PHP_ROUND_HALF_UP.
+     * @param 1|2|3|4 $mode The rounding mode. Defaults to PHP_ROUND_HALF_UP.
      * @return static The current instance for method chaining.
      */
     public function round(int $precision = 0, int $mode = PHP_ROUND_HALF_UP): static

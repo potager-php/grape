@@ -188,7 +188,7 @@ class CollectionValidator extends AbstractValidator
      *                               If null, items are compared directly.
      * @return static Returns the validator instance for method chaining
      */
-    public function distinct(callable $resolver = null): static
+    public function distinct(?callable $resolver = null): static
     {
         $this->rules[] = function (FieldContext $ctx) use ($resolver): void {
             $value = (array) $ctx->getValue();
