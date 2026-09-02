@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🍇 potager / grape
+# potager / grape
 
 **Type-safe schema validation, data sanitization, and structural contracts for PHP.**
 
@@ -14,23 +14,23 @@
 
 </div>
 
-**Grape** is a modern, zero-dependency schema validation and sanitization library for PHP 8.2+. Inspired by declarative schema ecosystems like Zod, Grape allows you to define declarative contracts, validate untrusted inputs, sanitize values in-place, and receive strongly-typed output with precise, nested error trees.
+**Grape** is a zero-dependency schema validation and sanitization library for PHP 8.2+. Inspired by declarative schema ecosystems like Zod, Grape allows you to define declarative contracts, validate untrusted inputs, sanitize values in-place, and receive strongly-typed output with precise, nested error trees.
 
 ---
 
-## ⚡ Highlights
+## Highlights
 
-- **Zero Dependencies** — Pure, lightweight PHP with no third-party runtime overhead.
-- **Fluent & Type-Safe** — Full IDE autocompletion with chainable, expressive constraint rules.
-- **In-Place Sanitization** — Transform data during parsing (`trim()`, `lowercase()`, `clamp()`, `compact()`).
-- **Flexible Flow Control** — Choose between traditional exception throwing or functional non-throwing tuples `[$error, $data]`.
-- **Dual Coercion Modes** — Loose mode (default) casts HTTP strings (e.g. `"42"` &rarr; `42`, `"true"` &rarr; `true`), while strict mode enforces exact native types.
-- **First-Class Composition** — Nest complex schemas, homogeneous collections, and fixed-size tuples with deduplication and index normalization.
-- **Customizable Error Collectors** — Output error trees, flat maps, or fast-fail on the first encountered error.
+- **Zero Dependencies** &mdash; Pure, lightweight PHP with no third-party runtime overhead.
+- **Fluent & Type-Safe** &mdash; Full IDE autocompletion with chainable, expressive constraint rules.
+- **In-Place Sanitization** &mdash; Transform data during parsing (`trim()`, `lowercase()`, `clamp()`, `compact()`).
+- **Flexible Flow Control** &mdash; Choose between traditional exception throwing or functional non-throwing tuples `[$error, $data]`.
+- **Dual Coercion Modes** &mdash; Loose mode (default) casts HTTP strings (e.g. `"42"` &rarr; `42`, `"true"` &rarr; `true`), while strict mode enforces exact native types.
+- **First-Class Composition** &mdash; Nest complex schemas, homogeneous collections, and fixed-size tuples with deduplication and index normalization.
+- **Customizable Error Collectors** &mdash; Output error trees, flat maps, or fast-fail on the first encountered error.
 
 ---
 
-## 📦 Installation
+## Installation
 
 Install Grape via Composer:
 
@@ -40,7 +40,7 @@ composer require potagerphp/grape
 
 ---
 
-## 🚀 Quickstart
+## Quickstart
 
 ### 1. Basic Schema & In-Place Sanitization
 
@@ -86,7 +86,7 @@ $userService->register($data);
 
 ---
 
-## 🧩 Core Capabilities
+## Core Capabilities
 
 ### Strict vs. Loose Type Coercion
 
@@ -134,9 +134,9 @@ $validator = Grape::string()
 ```
 
 Supported placeholders include:
-- `:field` — The attribute path (e.g. `user.email` or `items.0.sku`)
-- `:value` — The actual input value provided
-- `:min` / `:max` / `:length` — Boundary parameters for the active rule
+- `:field` &mdash; The attribute path (e.g. `user.email` or `items.0.sku`)
+- `:value` &mdash; The actual input value provided
+- `:min` / `:max` / `:length` &mdash; Boundary parameters for the active rule
 
 ---
 
@@ -157,7 +157,7 @@ Grape::useFirstErrorCollector();
 
 ---
 
-## 📚 Supported Types Reference
+## Supported Types Reference
 
 | Type Validator | Description | Key Methods |
 | :--- | :--- | :--- |
@@ -176,9 +176,9 @@ Grape::useFirstErrorCollector();
 
 ---
 
-## 🧪 Testing
+## Testing
 
-Grape is rigorously tested with **Pest** and statically analyzed with **PHPStan** (Level 8+):
+Grape is tested with **Pest** and statically analyzed with **PHPStan**:
 
 ```bash
 # Run test suite
@@ -190,12 +190,12 @@ composer analyse
 
 ---
 
-## 📄 License
+## License
 
-The Potager Grape library is open-sourced software licensed under the **[MIT license](LICENSE)**.
+Grape is open-sourced software licensed under the **[MIT license](LICENSE)**.
 
 ---
 
 <div align="center">
-  <sub>Built with care for the PHP Community by the <a href="https://github.com/potagerphp">Potager PHP</a> team.</sub>
+  <sub>Part of the <a href="https://github.com/potagerphp">Potager PHP</a> project.</sub>
 </div>
