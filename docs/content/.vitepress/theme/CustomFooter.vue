@@ -6,7 +6,7 @@
     <div class="footer-inner">
       <div class="footer-top">
         <div class="footer-brand-col">
-          <a href="/" class="footer-brand" aria-label="Grape Documentation Home">
+          <a :href="withBase('/')" class="footer-brand" aria-label="Grape Documentation Home">
             <span class="brand-ns">potager</span>
             <span class="brand-sep">/</span>
             <span class="brand-name">{{ siteConfig.brandName }}</span>
@@ -74,6 +74,7 @@
 </template>
 
 <script setup>
+import { withBase } from 'vitepress';
 import { siteConfig } from '../site.config';
 import { useSidebar } from 'vitepress/theme';
 
@@ -88,7 +89,7 @@ const { hasSidebar } = useSidebar();
   padding: 4.5rem 2rem 4rem;
   margin-top: auto;
   overflow: hidden;
-  z-index: 10;
+  z-index: 1;
 }
 
 /* Atmospheric Gravure Background (matching Hero) */
@@ -97,7 +98,7 @@ const { hasSidebar } = useSidebar();
   inset: -10%;
   width: 120%;
   height: 120%;
-  background-image: url('/assets/hero-bg.jpg');
+  background-image: url('../../assets/hero-bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center 80%;
@@ -127,22 +128,29 @@ html:not(.dark) .footer-bg {
   opacity: 0.14;
 }
 
-@media (min-width: 960px) {
+/* Documentation mode: Card layout inside #doc-after with generous padding */
+.custom-footer.has-sidebar {
+  margin-top: 4.5rem;
+  margin-bottom: 2rem;
+  padding: 2.25rem 1.75rem 2rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 16px;
+  background: var(--vp-c-bg-alt);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+@media (min-width: 640px) {
   .custom-footer.has-sidebar {
-    margin-left: var(--vp-sidebar-width);
-    width: calc(100% - var(--vp-sidebar-width));
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+    padding: 2.75rem 2.25rem 2.25rem;
   }
 }
 
-@media (min-width: 1440px) {
-  .custom-footer.has-sidebar {
-    margin-left: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
-    width: calc(100% - ((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width)));
-    padding-left: 2.5rem;
-    padding-right: calc((100vw - var(--vp-layout-max-width)) / 2 + 2.5rem);
-  }
+.custom-footer.has-sidebar .footer-inner {
+  max-width: 100%;
+}
+
+.custom-footer.has-sidebar .footer-top {
+  padding-bottom: 1.75rem;
 }
 
 .footer-inner {

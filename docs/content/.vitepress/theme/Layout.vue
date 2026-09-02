@@ -1,9 +1,11 @@
 <script setup>
 import DefaultTheme from 'vitepress/theme';
+import { useData } from 'vitepress';
 import { siteConfig } from '../site.config';
 import CustomFooter from './CustomFooter.vue';
 
 const { Layout } = DefaultTheme;
+const { frontmatter } = useData();
 </script>
 
 <template>
@@ -20,8 +22,12 @@ const { Layout } = DefaultTheme;
       </a>
     </template>
 
-    <template #layout-bottom>
+    <template #doc-after>
       <CustomFooter />
+    </template>
+
+    <template #layout-bottom>
+      <CustomFooter v-if="frontmatter.layout === 'page' || frontmatter.layout === 'home'" />
     </template>
   </Layout>
 </template>

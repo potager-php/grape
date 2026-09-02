@@ -24,10 +24,10 @@
         </p>
 
         <div class="hero-actions reveal-item">
-          <a href="/guide/getting-started" class="btn-solid">
+          <a :href="withBase('/guide/getting-started')" class="btn-solid">
             Documentation &rarr;
           </a>
-          <a href="/guide/introduction" class="btn-outline">
+          <a :href="withBase('/guide/introduction')" class="btn-outline">
             Introduction
           </a>
           <div class="terminal-pill" @click="copyCommand">
@@ -181,51 +181,51 @@
         </div>
 
         <div class="type-grid reveal-on-scroll">
-          <a href="/validator/types/string" class="type-link">
+          <a :href="withBase('/validator/types/string')" class="type-link">
             <span>string()</span>
             <span class="arrow">&rarr;</span>
           </a>
-          <a href="/validator/types/number" class="type-link">
+          <a :href="withBase('/validator/types/number')" class="type-link">
             <span>number()</span>
             <span class="arrow">&rarr;</span>
           </a>
-          <a href="/validator/types/integer" class="type-link">
+          <a :href="withBase('/validator/types/integer')" class="type-link">
             <span>integer()</span>
             <span class="arrow">&rarr;</span>
           </a>
-          <a href="/validator/types/float" class="type-link">
+          <a :href="withBase('/validator/types/float')" class="type-link">
             <span>float()</span>
             <span class="arrow">&rarr;</span>
           </a>
-          <a href="/validator/types/boolean" class="type-link">
+          <a :href="withBase('/validator/types/boolean')" class="type-link">
             <span>boolean()</span>
             <span class="arrow">&rarr;</span>
           </a>
-          <a href="/validator/types/accepted" class="type-link">
+          <a :href="withBase('/validator/types/accepted')" class="type-link">
             <span>accepted()</span>
             <span class="arrow">&rarr;</span>
           </a>
-          <a href="/validator/types/schema" class="type-link">
+          <a :href="withBase('/validator/types/schema')" class="type-link">
             <span>schema()</span>
             <span class="arrow">&rarr;</span>
           </a>
-          <a href="/validator/types/collection" class="type-link">
+          <a :href="withBase('/validator/types/collection')" class="type-link">
             <span>collection()</span>
             <span class="arrow">&rarr;</span>
           </a>
-          <a href="/validator/types/tuple" class="type-link">
+          <a :href="withBase('/validator/types/tuple')" class="type-link">
             <span>tuple()</span>
             <span class="arrow">&rarr;</span>
           </a>
-          <a href="/validator/types/literal" class="type-link">
+          <a :href="withBase('/validator/types/literal')" class="type-link">
             <span>literal()</span>
             <span class="arrow">&rarr;</span>
           </a>
-          <a href="/validator/types/null" class="type-link">
+          <a :href="withBase('/validator/types/null')" class="type-link">
             <span>null()</span>
             <span class="arrow">&rarr;</span>
           </a>
-          <a href="/validator/types/mixed" class="type-link">
+          <a :href="withBase('/validator/types/mixed')" class="type-link">
             <span>mixed()</span>
             <span class="arrow">&rarr;</span>
           </a>
@@ -237,6 +237,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import { withBase } from 'vitepress';
 import { siteConfig } from '../site.config';
 
 const copied = ref(false);

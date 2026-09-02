@@ -710,7 +710,7 @@ body {
 	inset: -12%;
 	width: 124%;
 	height: 124%;
-	background-image: url('/assets/hero-bg.jpg');
+	background-image: url('../../assets/hero-bg.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center 25%;
