@@ -5,9 +5,9 @@
       <div class="hero-bg"></div>
       <div class="hero-container">
         <div class="hero-meta reveal-item">
-          <span>potagerphp/grape</span>
+          <span>{{ siteConfig.packageName }}</span>
           <span class="sep">/</span>
-          <span class="version-badge">v0.1.0</span>
+          <span class="version-badge">{{ siteConfig.version }}</span>
           <span class="sep">/</span>
           <span>PHP 8.2+</span>
           <span class="sep">/</span>
@@ -20,7 +20,7 @@
         </h1>
 
         <p class="hero-desc reveal-item">
-          Define declarative contracts, parse untrusted inputs, sanitize values on-the-fly, and receive strongly typed output or precise error maps.
+          {{ siteConfig.tagline }}
         </p>
 
         <div class="hero-actions reveal-item">
@@ -32,7 +32,7 @@
           </a>
           <div class="terminal-pill" @click="copyCommand">
             <span class="term-prompt">$</span>
-            <span class="term-cmd">composer require potagerphp/grape</span>
+            <span class="term-cmd">composer require {{ siteConfig.packageName }}</span>
             <span class="copy-badge" :class="{ copied }">
               <svg v-if="!copied" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -237,13 +237,14 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import { siteConfig } from '../site.config';
 
 const copied = ref(false);
 const activeTab = ref(0);
 
 const copyCommand = async () => {
   try {
-    await navigator.clipboard.writeText('composer require potagerphp/grape');
+    await navigator.clipboard.writeText(`composer require ${siteConfig.packageName}`);
     copied.value = true;
     setTimeout(() => {
       copied.value = false;

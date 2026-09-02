@@ -1,9 +1,21 @@
 import { defineConfig } from 'vitepress';
+import { siteConfig } from './site.config';
 
 export default defineConfig({
 	title: 'Grape',
-	description: 'A PHP Validation Package',
+	description: siteConfig.tagline,
+	appearance: 'dark',
 	head: [
+		[
+			'script',
+			{},
+			`(()=>{const e=localStorage.getItem("vitepress-theme-appearance");(!e||e==="dark"||e==="auto"&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.documentElement.classList.add("dark")})();`
+		],
+		[
+			'style',
+			{},
+			`html.dark{background-color:#0c0c0f!important;color-scheme:dark;}html:not(.dark){background-color:#ffffff;color-scheme:light;}body{background-color:inherit;}`
+		],
 		['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
 		['link', { rel: 'icon', href: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍇</text></svg>' }],
 	],
@@ -14,7 +26,8 @@ export default defineConfig({
 		},
 	},
 	themeConfig: {
-		siteTitle: '<span class="brand-ns">potager</span><span class="brand-sep">/</span><span class="brand-title">grape</span>',
+		siteConfig,
+		siteTitle: `<span class="brand-ns">${siteConfig.brandNamespace}</span><span class="brand-sep">/</span><span class="brand-title">${siteConfig.brandName}</span>`,
 		search: {
 			provider: 'local',
 		},
@@ -65,6 +78,6 @@ export default defineConfig({
 				],
 			},
 		],
-		socialLinks: [{ icon: 'github', link: 'https://github.com/potagerphp/grape' }],
+		socialLinks: [{ icon: 'github', link: siteConfig.repoUrl }],
 	},
 });

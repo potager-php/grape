@@ -1,5 +1,6 @@
 <script setup>
 import DefaultTheme from 'vitepress/theme';
+import { siteConfig } from '../site.config';
 import CustomFooter from './CustomFooter.vue';
 
 const { Layout } = DefaultTheme;
@@ -9,13 +10,13 @@ const { Layout } = DefaultTheme;
   <Layout>
     <template #nav-bar-content-after>
       <a
-        href="https://github.com/potagerphp/grape/releases"
+        :href="siteConfig.releasesUrl"
         target="_blank"
         rel="noopener noreferrer"
         class="nav-version-badge"
         title="View latest releases on GitHub"
       >
-        v0.1.0
+        {{ siteConfig.version }}
       </a>
     </template>
 

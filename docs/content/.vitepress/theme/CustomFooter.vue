@@ -9,17 +9,17 @@
           <a href="/" class="footer-brand" aria-label="Grape Documentation Home">
             <span class="brand-ns">potager</span>
             <span class="brand-sep">/</span>
-            <span class="brand-name">grape</span>
-            <span class="footer-version">v0.1.0</span>
+            <span class="brand-name">{{ siteConfig.brandName }}</span>
+            <span class="footer-version">{{ siteConfig.version }}</span>
           </a>
           <p class="footer-tagline">
-            Type-safe schema validation and data sanitization for PHP 8.2+.
+            {{ siteConfig.tagline }}
           </p>
         </div>
 
         <nav class="footer-links" aria-label="Ecosystem links">
           <a
-            href="https://github.com/potagerphp/grape"
+            :href="siteConfig.repoUrl"
             target="_blank"
             rel="noopener noreferrer"
             class="footer-link-pill"
@@ -31,7 +31,7 @@
           </a>
 
           <a
-            href="https://packagist.org/packages/potagerphp/grape"
+            :href="siteConfig.packagistUrl"
             target="_blank"
             rel="noopener noreferrer"
             class="footer-link-pill"
@@ -45,7 +45,7 @@
           </a>
 
           <a
-            href="https://github.com/potagerphp/grape/blob/main/LICENSE"
+            :href="siteConfig.licenseUrl"
             target="_blank"
             rel="noopener noreferrer"
             class="footer-link-pill"
@@ -62,7 +62,7 @@
       <div class="footer-bottom">
         <div class="footer-legal">
           <p class="legal-text">
-            Released under the MIT License. Copyright &copy; {{ new Date().getFullYear() }} potagerphp &amp; contributors.
+            Released under the MIT License. Copyright &copy; {{ new Date().getFullYear() }} potager-php &amp; contributors.
           </p>
           <p class="legal-subtext">
             Privacy Notice: This static documentation site does not use cookies, collect personal data, or run trackers. Hosted on GitHub Pages.
@@ -74,7 +74,9 @@
 </template>
 
 <script setup>
+import { siteConfig } from '../site.config';
 import { useSidebar } from 'vitepress/theme';
+
 const { hasSidebar } = useSidebar();
 </script>
 

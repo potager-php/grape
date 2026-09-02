@@ -1,7 +1,12 @@
 {
     "name": "potagerphp/grape",
-    "description": "A PHP validation Framework.",
+    "description": "Type-safe schema validation and data sanitization for PHP 8.2+.",
     "type": "library",
+    "homepage": "https://github.com/potager-php/grape",
+    "support": {
+        "source": "https://github.com/potager-php/grape",
+        "issues": "https://github.com/potager-php/grape/issues"
+    },
     "require": {
         "php": ">=8.1"
     },

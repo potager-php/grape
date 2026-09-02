@@ -2,7 +2,12 @@
    Potager / Grape - Global Minimalist Theme Styles
    ========================================================================== */
 
-:root {
+:root,
+html,
+html.dark {
+	color-scheme: dark !important;
+	background-color: #0c0c0f !important;
+
 	/* Brand Accent */
 	--vp-c-brand-1: #8b5cf6;
 	--vp-c-brand-2: #7c3aed;
@@ -13,7 +18,34 @@
 	--vp-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 	--vp-font-family-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 
-	/* Light Mode Base */
+	/* Dark Mode as Default Base */
+	--vp-c-bg: #0c0c0f;
+	--vp-c-bg-alt: #111115;
+	--vp-c-bg-elv: #14141a;
+	--vp-c-bg-soft: #16161c;
+	--vp-c-bg-mute: #1d1d25;
+
+	--vp-c-text-1: #f4f4f6;
+	--vp-c-text-2: #a1a1aa;
+	--vp-c-text-3: #71717a;
+
+	--vp-c-border: #23232c;
+	--vp-c-divider: #1c1c24;
+	--vp-c-gutter: #1c1c24;
+
+	--vp-code-bg: #111115;
+	--vp-code-color: #f4f4f6;
+	--vp-code-copy-code-hover-bg: #23232c;
+
+	--vp-nav-bg-color: rgba(12, 12, 15, 0.85);
+	--vp-sidebar-bg-color: #0c0c0f;
+}
+
+/* Light Mode Overrides (Only active when .dark is explicitly absent) */
+html:not(.dark) {
+	color-scheme: light !important;
+	background-color: #ffffff !important;
+
 	--vp-c-bg: #ffffff;
 	--vp-c-bg-alt: #f9f9fb;
 	--vp-c-bg-elv: #ffffff;
@@ -36,28 +68,16 @@
 	--vp-sidebar-bg-color: #ffffff;
 }
 
-/* Dark Mode Overrides */
-.dark {
-	--vp-c-bg: #0c0c0f;
-	--vp-c-bg-alt: #111115;
-	--vp-c-bg-elv: #14141a;
-	--vp-c-bg-soft: #16161c;
-	--vp-c-bg-mute: #1d1d25;
+body {
+	background-color: var(--vp-c-bg) !important;
+	color: var(--vp-c-text-1) !important;
+}
 
-	--vp-c-text-1: #f4f4f6;
-	--vp-c-text-2: #a1a1aa;
-	--vp-c-text-3: #71717a;
-
-	--vp-c-border: #23232c;
-	--vp-c-divider: #1c1c24;
-	--vp-c-gutter: #1c1c24;
-
-	--vp-code-bg: #111115;
-	--vp-code-color: #f4f4f6;
-	--vp-code-copy-code-hover-bg: #23232c;
-
-	--vp-nav-bg-color: rgba(12, 12, 15, 0.85);
-	--vp-sidebar-bg-color: #0c0c0f;
+#app,
+.Layout,
+.VPContent,
+.VPPage {
+	background-color: var(--vp-c-bg) !important;
 }
 
 /* ==========================================================================
