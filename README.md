@@ -8,7 +8,7 @@
 [![PHP Version](https://img.shields.io/badge/php-%3E%3D8.2-blue?style=flat-square&color=black)](https://php.net)
 [![Software License](https://img.shields.io/badge/license-MIT-green?style=flat-square&color=black)](LICENSE)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen?style=flat-square&color=black)](composer.json)
-[![Documentation](https://img.shields.io/badge/docs-potager.dev-black?style=flat-square)](https://github.com/potager-php/grape)
+[![Documentation](https://img.shields.io/badge/docs-github_pages-black?style=flat-square)](https://potager-php.github.io/grape/)
 
 ---
 

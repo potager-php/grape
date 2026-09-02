@@ -14,6 +14,7 @@
     "license": "MIT",
     "homepage": "https://github.com/potager-php/grape",
     "support": {
+        "docs": "https://potager-php.github.io/grape/",
         "source": "https://github.com/potager-php/grape",
         "issues": "https://github.com/potager-php/grape/issues"
     },

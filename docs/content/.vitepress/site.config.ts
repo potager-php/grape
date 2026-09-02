@@ -13,6 +13,7 @@ export interface SiteConfig {
 	packagistUrl: string;
 	licenseUrl: string;
 	releasesUrl: string;
+	docsUrl: string;
 	copyright: string;
 }
 
@@ -27,5 +28,6 @@ export const siteConfig: SiteConfig = {
 	packagistUrl: 'https://packagist.org/packages/potagerphp/grape',
 	licenseUrl: 'https://github.com/potager-php/grape/blob/main/LICENSE',
 	releasesUrl: 'https://github.com/potager-php/grape/releases',
+	docsUrl: 'https://potager-php.github.io/grape/',
 	copyright: 'potager-php & contributors',
 };
