@@ -10,6 +10,7 @@
             <span class="brand-ns">potager</span>
             <span class="brand-sep">/</span>
             <span class="brand-name">grape</span>
+            <span class="footer-version">v0.1.0</span>
           </a>
           <p class="footer-tagline">
             Type-safe schema validation and data sanitization for PHP 8.2+.
@@ -195,6 +196,20 @@ html:not(.dark) .footer-bg {
 .footer-brand .brand-name {
   color: var(--vp-c-text-1);
   font-weight: 700;
+}
+
+.footer-brand .footer-version {
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--vp-c-text-3);
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-border);
+  padding: 0.12rem 0.42rem;
+  border-radius: 4px;
+  margin-left: 0.45rem;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
 }
 
 .footer-tagline {

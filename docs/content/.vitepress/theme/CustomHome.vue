@@ -4,24 +4,26 @@
     <header class="hero-section">
       <div class="hero-bg"></div>
       <div class="hero-container">
-        <div class="hero-meta">
+        <div class="hero-meta reveal-item">
           <span>potagerphp/grape</span>
+          <span class="sep">/</span>
+          <span class="version-badge">v0.1.0</span>
           <span class="sep">/</span>
           <span>PHP 8.2+</span>
           <span class="sep">/</span>
           <span>Zero dependencies</span>
         </div>
 
-        <h1 class="hero-title">
+        <h1 class="hero-title reveal-item">
           Type-safe schema validation<br />
           and data sanitization for PHP.
         </h1>
 
-        <p class="hero-desc">
+        <p class="hero-desc reveal-item">
           Define declarative contracts, parse untrusted inputs, sanitize values on-the-fly, and receive strongly typed output or precise error maps.
         </p>
 
-        <div class="hero-actions">
+        <div class="hero-actions reveal-item">
           <a href="/guide/getting-started" class="btn-solid">
             Documentation &rarr;
           </a>
@@ -56,7 +58,7 @@
     <!-- Centered Content Wrapper -->
     <main class="grape-content">
       <!-- Concise Interactive Example -->
-      <section class="content-section">
+      <section class="content-section reveal-on-scroll">
         <div class="section-header">
           <span class="section-tag">Quickstart</span>
           <h2 class="section-title">How it works</h2>
@@ -82,14 +84,14 @@
 
       <!-- Core Philosophy: Clean Editorial Pairs -->
       <section class="content-section">
-        <div class="section-header">
+        <div class="section-header reveal-on-scroll">
           <span class="section-tag">Design Principles</span>
           <h2 class="section-title">Core capabilities</h2>
         </div>
 
         <div class="feature-list">
           <!-- Item 1: Validation -->
-          <div class="feature-row">
+          <div class="feature-row reveal-on-scroll">
             <div class="feature-info">
               <h3 class="feature-title">Declarative Validation</h3>
               <p class="feature-desc">
@@ -106,7 +108,7 @@
           </div>
 
           <!-- Item 2: Sanitization -->
-          <div class="feature-row">
+          <div class="feature-row reveal-on-scroll">
             <div class="feature-info">
               <h3 class="feature-title">In-Place Data Sanitization</h3>
               <p class="feature-desc">
@@ -122,7 +124,7 @@
           </div>
 
           <!-- Item 3: Type Coercion -->
-          <div class="feature-row">
+          <div class="feature-row reveal-on-scroll">
             <div class="feature-info">
               <h3 class="feature-title">Strict &amp; Loose Type Coercion</h3>
               <p class="feature-desc">
@@ -137,7 +139,7 @@
           </div>
 
           <!-- Item 4: Composition -->
-          <div class="feature-row">
+          <div class="feature-row reveal-on-scroll">
             <div class="feature-info">
               <h3 class="feature-title">First-Class Composition</h3>
               <p class="feature-desc">
@@ -153,7 +155,7 @@
           </div>
 
           <!-- Item 5: Non-Throwing Flow -->
-          <div class="feature-row">
+          <div class="feature-row reveal-on-scroll">
             <div class="feature-info">
               <h3 class="feature-title">Non-Throwing Result Option</h3>
               <p class="feature-desc">
@@ -173,12 +175,12 @@
 
       <!-- Reference Directory -->
       <section class="content-section">
-        <div class="section-header">
+        <div class="section-header reveal-on-scroll">
           <span class="section-tag">Supported Types</span>
           <h2 class="section-title">Built-in types and structures</h2>
         </div>
 
-        <div class="type-grid">
+        <div class="type-grid reveal-on-scroll">
           <a href="/validator/types/string" class="type-link">
             <span>string()</span>
             <span class="arrow">&rarr;</span>
@@ -234,7 +236,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
 const copied = ref(false);
 const activeTab = ref(0);
@@ -250,6 +252,53 @@ const copyCommand = async () => {
     // Fallback
   }
 };
+
+let observer = null;
+
+onMounted(() => {
+  // Animate hero elements on initial mount with staggered timing
+  if (typeof window !== 'undefined') {
+    requestAnimationFrame(() => {
+      const heroItems = document.querySelectorAll('.hero-section .reveal-item');
+      heroItems.forEach((el, index) => {
+        setTimeout(() => {
+          el.classList.add('is-revealed');
+        }, index * 90);
+      });
+    });
+
+    // IntersectionObserver for scroll-triggered reveals
+    if ('IntersectionObserver' in window) {
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer?.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+        observer.observe(el);
+      });
+    } else {
+      // Fallback if IntersectionObserver is not supported
+      document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+        el.classList.add('is-revealed');
+      });
+    }
+  }
+});
+
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect();
+    observer = null;
+  }
+});
 
 const tabs = [
   {
