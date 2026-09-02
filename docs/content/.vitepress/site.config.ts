@@ -22,7 +22,7 @@ export const siteConfig: SiteConfig = {
 	brandNamespace: 'potager',
 	brandName: 'grape',
 	packageName: 'potagerphp/grape',
-	version: 'v0.1.0',
+	version: 'v0.1.1',
 	tagline: 'Type-safe schema validation and data sanitization for PHP 8.2+.',
 	repoUrl: 'https://github.com/potager-php/grape',
 	packagistUrl: 'https://packagist.org/packages/potagerphp/grape',
